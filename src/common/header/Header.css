@@ -1,0 +1,25 @@
+.header {
+    background: #222;
+    height: 36px;
+    padding: 8px 32px 8px 16px;
+}
+
+.logo {
+    background-color: #ff7f7f;
+    height: 35px;
+    animation: rotation 8s linear infinite;
+    float: left;
+}
+
+.header-button {
+  float: right;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(359deg);
+    }
+  }
