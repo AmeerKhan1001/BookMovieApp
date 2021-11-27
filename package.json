@@ -11,7 +11,9 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "react-youtube": "^7.13.1",
-    "typeface-roboto": "0.0.54"
+    "typeface-roboto": "0.0.54",
+    "prop-types": "latest",
+    "@mui/material": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
