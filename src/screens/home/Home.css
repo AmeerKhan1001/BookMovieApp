@@ -1,0 +1,16 @@
+.upcoming-movies-banner {
+    background: #ff9999;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.upcoming-movies-banner .upcoming-movies-banner-text {
+    font-size: 1rem;
+    padding: 8px;
+    text-align: center;
+}
+
+.movie-image {
+    height: 100%;
+}

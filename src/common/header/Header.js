@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SignInSignUpModal from "../modal/Modal";
 import "./Header.css";
 
-function renderLoginLogoutButton() {
+function renderLoginLogoutButton(setShowModal) {
   if (sessionStorage.getItem("access-token")) {
     return (
       <Button className="header-button" variant="contained">
@@ -13,7 +13,7 @@ function renderLoginLogoutButton() {
     );
   } else {
     return (
-      <Button className="header-button" variant="contained">
+      <Button className="header-button" variant="contained" onClick={() => setShowModal(true)}>
         Login
       </Button>
     );
@@ -61,7 +61,7 @@ const Header = (props) => {
           src={require("../../assets/logo.svg")}
           alt="logo"
         />
-        {renderLoginLogoutButton()}
+        {renderLoginLogoutButton(setShowModal)}
         {props.isDetailsPage
           ? renderBookShowButton(props.match.params.id, setShowModal)
           : null}
