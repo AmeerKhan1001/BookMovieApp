@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import SignInSignUpModal from "../modal/Modal";
 import "./Header.css";
 
-function renderLoginLogoutButton(setShowModal) {
-  if (sessionStorage.getItem("access-token")) {
+function renderLoginLogoutButton(setShowModal, isLoggedIn, logoutHandler) {
+  if (isLoggedIn) {
     return (
-      <Button className="header-button" variant="contained">
+      <Button className="header-button" variant="contained" onClick={() => logoutHandler(false)}>
         Logout
       </Button>
     );
@@ -20,8 +20,8 @@ function renderLoginLogoutButton(setShowModal) {
   }
 }
 
-function renderBookShowButton(id, setShowModal) {
-  if (sessionStorage.getItem("access-token")) {
+function renderBookShowButton(id, setShowModal, isLoggedIn) {
+  if (isLoggedIn) {
     return (
       <Link to={"/bookshow/" + id}>
         <Button
@@ -51,7 +51,15 @@ function renderBookShowButton(id, setShowModal) {
 
 const Header = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    sessionStorage.getItem("access-token") != null ? true : false
+  );
   const closeModalHandler = () => setShowModal(false);
+
+  const logoutHandler = () => {
+    sessionStorage.removeItem("access-token");
+    setIsLoggedIn(false);
+  };
 
   return (
     <React.Fragment>
@@ -61,12 +69,12 @@ const Header = (props) => {
           src={require("../../assets/logo.svg")}
           alt="logo"
         />
-        {renderLoginLogoutButton(setShowModal)}
+        {renderLoginLogoutButton(setShowModal, isLoggedIn, logoutHandler)}
         {props.isDetailsPage
-          ? renderBookShowButton(props.match.params.id, setShowModal)
+          ? renderBookShowButton(props.match.params.id, setShowModal, isLoggedIn)
           : null}
       </div>
-      <SignInSignUpModal show={showModal} close={closeModalHandler} />
+      <SignInSignUpModal baseUrl={props.baseUrl} show={showModal} close={closeModalHandler} setIsLoggedIn={setIsLoggedIn}/>
     </React.Fragment>
   );
 };

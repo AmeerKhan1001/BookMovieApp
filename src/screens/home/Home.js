@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Header from "../../common/header/Header";
 import "./Home.css";
 import { createStyles, makeStyles, withStyles } from "@material-ui/core/styles";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
+import ImageList from "@material-ui/core/ImageList";
+import ImageListItem from "@material-ui/core/ImageListItem";
+import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import FormControl from "@material-ui/core/FormControl";
@@ -32,7 +32,7 @@ const styles = (theme) => ({
 const Home = (props) => {
   return (
     <React.Fragment>
-      <Header />
+      <Header {...props} />
       <HomeBanner />
       <UpcomingMovies baseUrl={props.baseUrl} />
       <ReleasedMoviesSection {...props} baseUrl={props.baseUrl} />
@@ -92,24 +92,24 @@ function UpcomingMovies(props) {
 
   return (
     <div className={classes.root}>
-      <GridList cellheight={250} cols={6} className={classes.gridList}>
+      <ImageList cellheight={250} cols={6} className={classes.gridList}>
         {upcomingMovies.map((movie) => (
-          <GridListTile key={"movie_" + movie.id}>
+          <ImageListItem key={"movie_" + movie.id}>
             <img
               src={movie.poster_url}
               alt={movie.title}
               className="movie-image"
             />
-            <GridListTileBar
+            <ImageListItemBar
               title={movie.title}
               classes={{
                 root: classes.titleBar,
                 title: classes.title,
               }}
             />
-          </GridListTile>
+          </ImageListItem>
         ))}
-      </GridList>
+      </ImageList>
     </div>
   );
 }
@@ -189,9 +189,9 @@ function ReleasedMoviesSection(props) {
   return (
     <div className="flex-container">
       <div className="released-movies">
-        <GridList cellHeight={350} cols={4} spacing={20}>
+        <ImageList rowHeight={350} cols={4} gap={20}>
           {releasedMovies.map((movie) => (
-            <GridListTile
+            <ImageListItem
               key={"movie_" + movie.id}
               style={{ height: "350px", width: "300px", cursor: "pointer" }}
               onClick={() => props.history.push("/movie/" + movie.id)}
@@ -201,7 +201,7 @@ function ReleasedMoviesSection(props) {
                 alt={movie.title}
                 className="movie-image"
               />
-              <GridListTileBar
+              <ImageListItemBar
                 title={movie.title}
                 subtitle={
                   <span>
@@ -209,9 +209,9 @@ function ReleasedMoviesSection(props) {
                   </span>
                 }
               />
-            </GridListTile>
+            </ImageListItem>
           ))}
-        </GridList>
+        </ImageList>
       </div>
       <div className="movie-filters">
         <Card>
