@@ -31,6 +31,6 @@
 }
 
 .flex-container {
-  flex-direction: column;
+  display: flex;
   margin: 16px;
 }
