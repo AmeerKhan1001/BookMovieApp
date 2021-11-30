@@ -165,7 +165,7 @@ function ReleasedMoviesSection(props) {
 
     if (movieName !== "") initialQueryString += "&title=" + movieName;
     if (selectedGenres.length > 0)
-      initialQueryString += "&genres=" + selectedGenres.toString();
+      initialQueryString += "&genre=" + selectedGenres.toString();
     if (selectedArtists.length > 0)
       initialQueryString += "&artists=" + selectedArtists.toString();
     if (startReleasedDate !== "")

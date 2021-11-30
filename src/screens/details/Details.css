@@ -1,0 +1,41 @@
+.back-to-home {
+  margin-left: 24px;
+  margin-top: 8px;
+  margin-bottom: 0px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container > div {
+  margin: 0px 16px;
+}
+
+.flex-container-left {
+  width: 20%;
+  text-align: center;
+}
+
+.flex-container-middle {
+  margin: 1px;
+  width: 60%;
+}
+
+.flex-container-right {
+  width: 20%;
+}
+
+.margin-top-details {
+  margin-top: 16px;
+}
+
+.margin-bottom-details {
+  margin-bottom: 16px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
